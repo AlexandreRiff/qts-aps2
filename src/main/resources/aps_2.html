@@ -1,0 +1,97 @@
+<html>
+<title>
+Trabalho 2-1
+</title>
+
+<body>
+
+<script>
+
+function salvar(){
+	var nome = document.getElementById("nome").value ;
+	var endereco = document.getElementById("endereco").value;
+	var sexo = document.getElementById("sexo").value;
+	var idade = document.getElementById("idade").value;
+	
+	var error = "";
+	document.getElementById("resultado").innerHTML = "";
+	
+	if(nome == ""){
+		error = "Preencha o campo nome";		
+	}
+	else if(endereco == ""){
+		error = "Preencha o campo endereco";		
+	}
+	
+	else if(sexo == "..."){
+		error = "Selecione um valor para o campo sexo";		
+	}
+	
+	else if(idade == "" || isNaN(idade)){
+		error = "Preencha o campo idade, somente com numeros";	
+	}else if(isNaN(idade) == false){
+		if(parseInt(idade) < 0){
+			error = "Preencha o campo idade com valores acima de 0";
+		}
+	}
+	
+	if(error == ""){
+		alert("Cadastro realizado com sucesso");
+		limpaTela();
+	}else{	
+		document.getElementById("resultado").innerHTML =  error;
+	}
+}
+
+function limpaTela(){
+	document.getElementById("nome").value = "";
+	var endereco = document.getElementById("endereco").value = "";
+	var sexo = document.getElementById("sexo").value = "...";
+	var idade = document.getElementById("idade").value = "";
+	
+}
+
+</script>
+
+<h2>Cadastro Pessoa</h2>
+
+
+<table>
+<tr>
+	<td>Nome: </td>
+	<td> <input type="text" id="nome" > </td>
+</tr>
+<tr>
+	<td>Endereco: </td>
+	<td> <input type="text" id="endereco"><br> </td>
+</tr>
+<tr>
+
+	<td>Sexo:</td>
+	<td>
+	<select id="sexo">
+		<option value="...">...</option>
+		<option value="m">Masculino</option>
+		<option value="f">Feminino</option>
+	</select>
+	<td>
+</tr>
+<tr>
+	<td>Idade: </td>
+	<td> <input type="text" id="idade"><br> </td>
+</tr>
+</table>
+
+<button onclick="salvar()" id="botao_somar">salvar</button>
+
+
+
+<br>
+<br>
+
+<div id="resultado"></div>
+
+</body>
+
+
+</html>
